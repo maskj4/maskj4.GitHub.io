@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="app">
+    <span id="childSpan"></span>
+</body>
+<script>
+    var obj = {}
+    var initValue='初始值'
+    Object.defineProperty(obj,'initValue',{
+        get(){
+            console.log('获取obj最新的值');
+            return initValue
+        },
+        set(newVal){
+            initValue = newVal
+            console.log('设置最新的值');
+            // 获取到最新的值  然后将最新的值赋值给我们的span
+            document.getElementById('childSpan').innerHTML = initValue
+            console.log(obj.initValue);
+        }
+    })
+    document.addEventListener('keyup', function (e) {
+        obj.initValue = e.target.value; //监听文本框里面的值 获取最新的值 然后赋值给obj 
+    })
+    
+</script>
+</html>
